@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 2069102940}
   - component: {fileID: 2069102939}
   m_Layer: 0
-  m_Name: Half Green BG
+  m_Name: Watercolor BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
