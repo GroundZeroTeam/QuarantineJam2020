@@ -45,7 +45,7 @@ public class SplashScreenManager : MonoBehaviour
 
         if (startMove == true)
         {
-            CameraObject.transform.position = new Vector3(Mathf.MoveTowards(0.95f, 28, (Time.time - (DelaySeconds * 3)) * MoveSeconds), transform.position.y, transform.position.z);
+            BGSPrite.color = Color.Lerp(Color.white, Color.clear, Mathf.MoveTowards(0, 1, (Time.time - DelaySeconds*3) * FadeSeconds));
         }
     }
 

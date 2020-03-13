@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     [Range(1, 10)]
     private float jumpVelocity;
+    
+    [SerializeField]
+    [Range(1, 10)]
+    private float moveVelocity;
     [SerializeField]
     private int maxJumps = 1;
 
@@ -33,11 +37,19 @@ public class PlayerMovement : MonoBehaviour
             jumpCount--;
         }
 
+        if (Input.GetAxis("Horizontal") > 0.0f)
+        {
+            rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+        } else if (Input.GetAxis("Horizontal") < 0.0f)
+        {
+            rb.velocity = new Vector2(-moveVelocity, rb.velocity.y);
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D Col)
     {
-        if (Col.gameObject.tag == "ground")
+        if (Col.gameObject.tag == "Ground")
         {
             jumpCount = maxJumps;
         }
