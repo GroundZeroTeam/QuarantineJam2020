@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 609078103684062133}
+  - component: {fileID: 1605240611134860257}
   - component: {fileID: 609078103684062134}
   - component: {fileID: 609078103684062132}
   m_Layer: 0
@@ -18,20 +18,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &609078103684062133
-Transform:
+--- !u!224 &1605240611134860257
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609078103684062135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7590673, y: 0.2313979, z: -19.364187}
+  m_LocalPosition: {x: 0, y: 0, z: -19.364187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 3.7590673, y: 0.2313979}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609078103684062134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,6 +53,13 @@ MonoBehaviour:
   FadeSeconds: 0.5
   LogoFadeSeconds: 0.5
   MoveSeconds: 1
+  introSprites:
+  - {fileID: 21300000, guid: 833270026ff668f429c4be534e42d662, type: 3}
+  - {fileID: 21300000, guid: 95615981c7e78ff48be8148e3646b7cf, type: 3}
+  - {fileID: 21300000, guid: 2d952c417ae8bca43924b7e5992be055, type: 3}
+  - {fileID: 21300000, guid: 87752c3a17299ba48b184162acc3c64e, type: 3}
+  - {fileID: 21300000, guid: 78d0bdf35cdf0bc42917d2d3598edff0, type: 3}
+  - {fileID: 21300000, guid: 269c023042545744f98b3960488e5e50, type: 3}
   BGSPrite: {fileID: 0}
   LogoSprite: {fileID: 0}
   CameraObject: {fileID: 0}
@@ -63,7 +75,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 933bb99a32affdf4990da8c26177d54d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 44b6b258d44b32c42aedb1b5a42b0594, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

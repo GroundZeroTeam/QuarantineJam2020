@@ -132,7 +132,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 3233d948a41502540ad39f6a28d569ba, type: 3}
+      objectReference: {fileID: 8300000, guid: 44b6b258d44b32c42aedb1b5a42b0594, type: 3}
     - target: {fileID: 609078103684062133, guid: 1d4151a93b50cfd458ca3881311f9dc8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -223,6 +223,12 @@ PrefabInstance:
       propertyPath: StartColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 609078103684062134, guid: 1d4151a93b50cfd458ca3881311f9dc8,
+        type: 3}
+      propertyPath: introSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 95615981c7e78ff48be8148e3646b7cf,
+        type: 3}
     - target: {fileID: 609078103684062135, guid: 1d4151a93b50cfd458ca3881311f9dc8,
         type: 3}
       propertyPath: m_Name
@@ -231,13 +237,13 @@ PrefabInstance:
     - target: {fileID: 609078103684062135, guid: 1d4151a93b50cfd458ca3881311f9dc8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d4151a93b50cfd458ca3881311f9dc8, type: 3}
---- !u!4 &12294825 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 609078103684062133, guid: 1d4151a93b50cfd458ca3881311f9dc8,
+--- !u!224 &12294825 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1605240611134860257, guid: 1d4151a93b50cfd458ca3881311f9dc8,
     type: 3}
   m_PrefabInstance: {fileID: 12294824}
   m_PrefabAsset: {fileID: 0}
@@ -753,6 +759,11 @@ PrefabInstance:
       propertyPath: spawnTimeRangeMin
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2436348584603770615, guid: 278c287f9d63edd4a9e0e1beff44665e,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6688417360226294621, guid: 278c287f9d63edd4a9e0e1beff44665e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 278c287f9d63edd4a9e0e1beff44665e, type: 3}
@@ -942,6 +953,11 @@ PrefabInstance:
       propertyPath: spawnTimeRangeMin
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2436348584603770615, guid: 278c287f9d63edd4a9e0e1beff44665e,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6688417360226294621, guid: 278c287f9d63edd4a9e0e1beff44665e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 278c287f9d63edd4a9e0e1beff44665e, type: 3}
@@ -1037,7 +1053,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159339103}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3233d948a41502540ad39f6a28d569ba, type: 3}
@@ -1142,7 +1158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1178700251
 Transform:
   m_ObjectHideFlags: 0
@@ -1805,6 +1821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: points.Array.data[1].y
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2436348584603770615, guid: 278c287f9d63edd4a9e0e1beff44665e,
+        type: 3}
+      propertyPath: initialSpawnDelay
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6688417360226294621, guid: 278c287f9d63edd4a9e0e1beff44665e, type: 3}

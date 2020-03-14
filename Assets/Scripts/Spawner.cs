@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
 
     [SerializeField]
-    [Range(0, 10)]
+    [Range(0, 120)]
     private float initialSpawnDelay = 5.0f;
 
     [SerializeField]
