@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     [Range(1, 10)]
     private float jumpVelocity;
-    
+
+    [SerializeField]
+    private float jumpTime = 0.4f;
+
     [SerializeField]
     [Range(1, 10)]
     private float moveVelocity;
@@ -20,10 +23,15 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 lastDirectionMovement;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
+    private Coroutine jumpEnumerator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -41,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         //TO DO: it has to change but I don't know how to configure for multiple Joystick
         if (Input.GetKeyDown(KeyCode.H))
         {
-            float dashDistance =2f;
+            float dashDistance = 2f;
             transform.position += lastDirectionMovement * dashDistance;
             //To Do: dash animation
         }
@@ -49,21 +57,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-   if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0)
         {
             rb.velocity = Vector2.up * jumpVelocity;
             jumpCount--;
-            Debug.Log("jumpcount: "+jumpCount);
+            Debug.Log("jumpcount: " + jumpCount);
+
+            anim.SetBool("jumping", true);
+            StartCoroutine(EndJump());
         }
 
         if (Input.GetAxis("Horizontal") > 0.0f)
         {
             rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
-            lastDirectionMovement= new Vector3(1f,0f).normalized;
-        } else if (Input.GetAxis("Horizontal") < 0.0f)
+            lastDirectionMovement = new Vector3(1f, 0f).normalized;
+
+            anim.SetBool("running", true);
+            spriteRenderer.flipX = false;
+        }
+        else if (Input.GetAxis("Horizontal") < 0.0f)
         {
             rb.velocity = new Vector2(-moveVelocity, rb.velocity.y);
-            lastDirectionMovement= new Vector3(-1f,0f).normalized;
+            lastDirectionMovement = new Vector3(-1f, 0f).normalized;
+
+            anim.SetBool("running", true);
+            spriteRenderer.flipX = true;
+
+        }
+        else //if (rb.velocity == Vector2.zero)
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            anim.SetBool("running", false);
         }
     }
 
@@ -71,20 +95,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Col.gameObject.tag == "Ground")
         {
-            Debug.Log("jumpcount: "+jumpCount);
+            Debug.Log("jumpcount: " + jumpCount);
             jumpCount = maxJumps;
         }
-        
+
     }
 
-    void OnTriggerEnter2D (Collider2D Col) {
-        if (Col.gameObject.tag == "Small Ledge" )
+    void OnTriggerEnter2D(Collider2D Col)
+    {
+        if (Col.gameObject.tag == "Small Ledge")
         {
             //Physics2D.IgnoreCollision(Col, GetComponent<Collider2D>());
             Debug.Log("hit");
-            Debug.Log("jumpcount: "+jumpCount);
-            jumpCount ++;
+            Debug.Log("jumpcount: " + jumpCount);
+            jumpCount++;
         }
     }
 
+    IEnumerator EndJump()
+    {
+        yield return new WaitForSeconds(jumpTime);
+
+        anim.SetBool("jumping", false);
+    }
 }
