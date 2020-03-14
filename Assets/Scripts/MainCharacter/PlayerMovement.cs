@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
 
     private Rigidbody2D rb;
-
+    private Vector3 lastDirectionMovement;
 
     void Awake()
     {
@@ -31,7 +31,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        HandleMovement();
+        HandleDash();
+
+    }
+
+    private void HandleDash()
+    {
+        //TO DO: it has to change but I don't know how to configure for multiple Joystick
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            float dashDistance =2f;
+            transform.position += lastDirectionMovement * dashDistance;
+            //To Do: dash animation
+        }
+    }
+
+    private void HandleMovement()
+    {
+   if (Input.GetButtonDown("Jump") && jumpCount > 0)
         {
             rb.velocity = Vector2.up * jumpVelocity;
             jumpCount--;
@@ -41,11 +59,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Horizontal") > 0.0f)
         {
             rb.velocity = new Vector2(moveVelocity, rb.velocity.y);
+            lastDirectionMovement= new Vector3(1f,0f).normalized;
         } else if (Input.GetAxis("Horizontal") < 0.0f)
         {
             rb.velocity = new Vector2(-moveVelocity, rb.velocity.y);
+            lastDirectionMovement= new Vector3(-1f,0f).normalized;
         }
-
     }
 
     void OnCollisionEnter2D(Collision2D Col)
