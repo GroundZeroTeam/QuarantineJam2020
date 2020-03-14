@@ -5,16 +5,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    
-    [SerializeField]
-    [Range(1, 10)]
-    private float moveVelocity;
-
     [SerializeField]
     [Range(1, 10)]
     private float destroyAfterSeconds = 5.0f;
 
-    private Transform centerPoint;
+    [SerializeField]
+    private Vector2 speed = new Vector2(5, 5);
 
     private Vector2 direction = Vector2.zero;
 
@@ -24,20 +20,11 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        centerPoint = GameObject.Find("Center Ground").transform;
     }
 
     private void Start()
     {
-        if ((centerPoint.position.x - transform.position.x) > 0.0f)
-        {
-            direction = new Vector2(moveVelocity, -5f);
-        }
-        else if ((centerPoint.position.x - transform.position.x) < 0.0f)
-        {
-            direction = new Vector2(-moveVelocity, -5f);
-        }
+        direction = new Vector2(transform.rotation.x * speed.x, transform.rotation.y * speed.y);
 
         StartCoroutine(WaitForDestroy());
 

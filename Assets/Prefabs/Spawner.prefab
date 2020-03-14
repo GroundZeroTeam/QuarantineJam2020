@@ -48,3 +48,7 @@ MonoBehaviour:
   randomizeSpawnTime: 1
   spawnObject: {fileID: 4440831520746096906, guid: 8b0278a76a333ba4c86798c39797ff85,
     type: 3}
+  randomSpawnDirection: 1
+  spawnDirection: {x: 0, y: 0, z: 0, w: 0}
+  movable: 0
+  points: []
