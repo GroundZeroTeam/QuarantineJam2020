@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 10)]
     private float moveVelocity;
     [SerializeField]
-    private int maxJumps = 1;
+    private int maxJumps;
 
     private int jumpCount = 0;
 
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpVelocity;
             jumpCount--;
+            Debug.Log("jumpcount: "+jumpCount);
         }
 
         if (Input.GetAxis("Horizontal") > 0.0f)
@@ -51,7 +52,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Col.gameObject.tag == "Ground")
         {
+            Debug.Log("jumpcount: "+jumpCount);
             jumpCount = maxJumps;
+        }
+        
+    }
+
+    void OnTriggerEnter2D (Collider2D Col) {
+        if (Col.gameObject.tag == "Small Ledge" )
+        {
+            //Physics2D.IgnoreCollision(Col, GetComponent<Collider2D>());
+            Debug.Log("hit");
+            Debug.Log("jumpcount: "+jumpCount);
+            jumpCount ++;
         }
     }
 
